@@ -1,0 +1,45 @@
+<h1 style="background-color:lightgrey;"> Hey guys my name is Jeremy</h1>
+
+<p>This is my super cool website! Boom! 💥</p>
+
+<p>Below is a link that doesn't do anything lol</p>
+
+<a href="">some-link-that-doesn't-go-anywhere</a>
+
+<p>Oh wow, look at this amazing button I made!</p>
+
+<p><button onclick="document.write('you clicked the button');">Click me, please!</button></p>
+
+<p>The button doesn't do anything either, gotcha!! 🤭</p>
+
+<script>
+x = 5;
+console.log('log statement that resolves to: ', x + 5);
+
+for(let i = 0; i < x; i++){
+	console.log('i: ', i);
+};
+
+let y_array = ["Coding", "Dojo", "is", "awesome!"];
+console.log(y_array[3]); 
+
+//loops through 1 to 10 and prints whether the number is odd or even
+let j;
+for(j=1; j<=10; j++){
+    if(j%2 == 0) {
+        console.log(j, ' is an Even number');
+    }
+    else {
+        console.log(j, 'is an Odd number');
+    }
+}
+
+let sum = (x,y) => {
+    console.log('Got the following two parameters', x, y);
+    return x+y;
+}
+console.log(sum(5,3));  //logs 8
+console.log(sum(10,15) + sum(3,5));  //logs 33
+
+</script>
+

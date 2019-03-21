@@ -1,0 +1,53 @@
+<!-- Complete the appendList function. appendList should take an array of strings and the id of a <ul> element, 
+and append all elements of the array as <li> tags. -->
+
+<html>
+
+<body>
+	<h1>Students</h1>
+	<div id="superAppendId"></div>
+	<ul id="main">
+		<!-- this is empty-->
+	</ul>
+
+	<script>
+		function appendList(array, id) {
+			let ul = document.getElementById(id)
+			for (i = 0; i < students.length; i++) {
+				let li = document.createElement("li")
+				li.innerHTML = array[i]
+				ul.appendChild(li)
+			}
+		};
+
+		let students = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
+		let target_id = "main";
+
+		appendList(students, target_id);
+
+
+		// Bonus: Create a new function called superAppend 
+		// that also takes the type of element we want to append.
+		// element can be p, li, h1, etc
+
+		function superAppend(array, element, id) {
+			let getId = document.getElementById(id)
+
+			for (i = 0; i < people.length; i++) {
+				let createElement = document.createElement(element)
+				createElement.innerHTML = array[i]
+				getId.appendChild(createElement)
+			}
+		};
+
+		let people = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
+		let element = "p";
+		let id = "superAppendId";
+
+		superAppend(people, element, id);
+
+	</script>
+
+</body>
+
+</html>
