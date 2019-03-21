@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="styleSheet" type="text/css" href="index.css" />
+    <title>New Counter App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            counters: [{ count: 0 }]
+          };
+        }
+        AddCounter = () => {
+          // console.log("AddCounter INVOKED!");
+
+          // "counters" is the key in the constructor above
+          // spread over the object and add a new object with a
+          // key of "count" and a value of "0"
+          this.setState({ counters: [...this.state.counters, { count: 0 }] });
+        };
+        IncrementCounter = idx => {
+          // console.log("Increment Counter INVOKED!");
+          // console.log("idx = ", idx);
+          // console.log(this.state.counters[idx]);
+          this.state.counters[idx].count++;
+          this.setState({
+            counters: this.state.counters
+          });
+        };
+        DecrementCounter = idx => {
+          // console.log("Decrement Counter INVOKED!");
+          // console.log("idx = ", idx);
+          // console.log(this.state.counters[idx]);
+          this.state.counters[idx].count--;
+          this.setState({
+            counters: this.state.counters
+          });
+        };
+        render() {
+          const mappedCounters = this.state.counters.map(
+            (currentValueCounter, idx) => {
+              return (
+                <div key={idx} className="counterMain">
+                  <h1>Count: {currentValueCounter.count}</h1>
+                  <button
+                    onClick={() => {
+                      this.IncrementCounter(idx);
+                    }}
+                  >
+                    Increment
+                  </button>
+                  <button
+                    onClick={() => {
+                      this.DecrementCounter(idx);
+                    }}
+                  >
+                    Decrement
+                  </button>
+                </div>
+              );
+            }
+          );
+          return (
+            <div>
+              <button onClick={this.AddCounter}>Add Another Counter</button>
+              {mappedCounters}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

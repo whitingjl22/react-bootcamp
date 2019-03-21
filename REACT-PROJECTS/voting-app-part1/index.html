@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="styleSheet" type="text/css" href="index.css" />
+    <title>New Voting App pt1</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+
+  <script type="text/babel">
+    const Title = props => {
+      const { titleText } = props;
+      return <h1>{titleText}</h1>;
+    };
+    const Library = props => {
+      const allListItemItems = props.items.map((items, idx) => {
+        return (
+          <li className="listItems" key={idx}>
+            <div className="parentDivOfEachRow">
+              <div className="votes">{items.votes}</div>
+              <div className="listItemText">{items.title}</div>
+              <img
+                src="img/plus-sign.png"
+                onClick={() => {
+                  alert(`You voted for ${items.title}`);
+                }}
+              />
+            </div>
+          </li>
+        );
+      });
+      return <ul>{allListItemItems}</ul>;
+    };
+    const App = props => {
+      return (
+        <div>
+          <Title titleText={"Vote For Your Favorite JS Library!"} />
+          <Library
+            items={[
+              { votes: 15, title: "React" },
+              { votes: 12, title: "Vue" },
+              { votes: 9, title: "Angular" },
+              { votes: 4, title: "Ember" }
+            ]}
+          />
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById("app"));
+  </script>
+</html>

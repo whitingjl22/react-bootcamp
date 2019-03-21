@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="voting app part 2" content="new features" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="styleSheet" type="text/css" href="index.css" />
+    <title>Voting App Part 2</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      const Counter = (props) => {
+        return (
+          <div className="flex-container2">
+            {props.libraryOptions
+              .sort((a, b) => {
+                return b.count - a.count
+              })
+              .map((currentValue, idx) => {
+                return (
+                  <div key={idx} className="parentDiv">
+                    <span className="count">{currentValue.count}</span>
+                    <span className="libraryName">{currentValue.name}</span>
+                    <img
+                      className="plusIcon"
+                      src="img/gplus.jpg"
+                      onClick={() => {
+                        props.updateCounter(idx)
+                      }}
+                    />
+                    <img
+                      className="subtractIcon"
+                      src="img/rnewminus.png"
+                      onClick={() => {
+                        props.decrementCounter(idx)
+                      }}
+                    />
+                  </div>
+                )
+              })}
+          </div>
+        )
+      }
+
+      class App extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = {
+            libraryOptions: [
+              {
+                name: "React",
+                count: 0
+              },
+              {
+                name: "Vue",
+                count: 0
+              },
+              {
+                name: "Angular",
+                count: 0
+              },
+              {
+                name: "Ember",
+                count: 0
+              }
+            ]
+          }
+        }
+        updateCounter = (idx) => {
+          let temp = this.state.libraryOptions
+          temp[idx].count++
+          this.setState({ libraryOptions: temp })
+        }
+        decrementCounter = (idx) => {
+          let temp = this.state.libraryOptions
+          temp[idx].count--
+          this.setState({ libraryOptions: temp })
+        }
+        render() {
+          return (
+            <div>
+              <h1 className="flex-container1">Vote For Your Favorite JS Library!</h1>
+              <Counter
+                libraryOptions={this.state.libraryOptions}
+                updateCounter={this.updateCounter}
+                decrementCounter={this.decrementCounter}
+              />
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"))
+    </script>
+  </body>
+</html>

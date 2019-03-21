@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React Ticking Clock</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script>
+      // // Vanilla JavaScript
+      // 		function myTimer() {
+      // 			let time = new Date().toLocaleTimeString();
+      // 			let printedText = `The time is: ${time}`
+      // 			document.getElementById('app').innerHTML = printedText;
+      // 		}
+
+      // 		let myInterval = setInterval(myTimer, 1000);
+
+      // ReactJS
+      function myInterval() {
+        let newTime = new Date().toLocaleTimeString();
+        const Header1 = React.createElement(
+          "h1",
+          null,
+          `The time is: ${newTime}`
+        );
+        ReactDOM.render(Header1, document.getElementById("app"));
+      }
+
+      setInterval(myInterval, 1000);
+    </script>
+  </body>
+</html>

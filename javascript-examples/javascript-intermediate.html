@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>JavaScript Intermediate</title>
+</head>
+
+<body>
+
+	<script>
+		// Create a function called starString() 
+		// that takes a number and returns a string of that many *
+
+		console.log("Part 1");
+		function starString(num) {
+			star = '*';
+			console.log(star.repeat(num));
+		}
+
+		starString(5); // *****
+
+		// Create a function called drawStars() 
+		// that takes an array of numbers and prints out *.
+
+		console.log('Part 2');
+		function drawStars(arr) {
+			star = '*';
+			for (var i = 0; i < arr.length; i++) {
+				console.log(star.repeat(arr[i]));
+			}
+		}
+
+		let x = [4, 6, 1, 3, 5, 7, 25];
+		drawStars(x);
+
+		// Modify the function above. Allow an array containing integers and strings 
+		// to be passed to the drawStars() function. When a string is passed, instead of displaying *, 
+		// display the first letter of the string according to the example below. 
+		// You may use the .toLowerCase() string method for this part.
+
+		console.log('Part 3');
+		function drawStars(arr) {
+			star = '*';
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i].constructor === String) {
+					let y = '';
+					y = arr[i].charAt(0);
+					let lowercase = y.toLowerCase();
+					let lengthOf = arr[i].length;
+					console.log(lowercase.repeat(lengthOf));
+				} else {
+					console.log(star.repeat(arr[i]));
+				}
+			}
+		}
+
+		let numbersStrings = [4, "Tom", 1, "Michael", 5, 7, "Jimmy Smith"]
+		drawStars(numbersStrings);
+
+	</script>
+
+</body>
+
+</html>

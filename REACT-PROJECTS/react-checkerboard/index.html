@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React Checkerboard</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script>
+      let rows = prompt("Enter number of rows");
+
+      function black() {
+        return React.createElement("div", {
+          style: {
+            backgroundColor: "black",
+            height: "50px",
+            width: "50px",
+            display: "inline-block"
+          }
+        });
+      }
+      function red() {
+        return React.createElement("div", {
+          style: {
+            backgroundColor: "red",
+            height: "50px",
+            width: "50px",
+            display: "inline-block"
+          }
+        });
+      }
+      function br() {
+        return React.createElement("br", null, null);
+      }
+
+      const world = [];
+      for (var i = 0; i < rows; i++) {
+        for (var x = 0; x < rows; x++) {
+          if ((x + i) % 2 === 0) world.push(black());
+          else world.push(red());
+        }
+        world.push(br());
+      }
+
+      const div = React.createElement(
+        "div",
+        { style: { lineHeight: "0px" } },
+        world
+      );
+
+      ReactDOM.render(div, document.getElementById("app"));
+    </script>
+  </body>
+</html>

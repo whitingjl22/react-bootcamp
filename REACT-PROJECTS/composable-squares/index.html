@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Composable Square</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const Div1 = React.createElement(
+        "div",
+        {
+          style: {
+            backgroundColor: "blue",
+            display: "inline-block",
+            height: "100px",
+            width: "100px",
+            color: "white"
+          }
+        },
+        "white on blue"
+      );
+      const Div2 = React.createElement(
+        "div",
+        {
+          style: {
+            backgroundColor: "red",
+            display: "inline-block",
+            height: "100px",
+            width: "100px",
+            color: "blue"
+          }
+        },
+        "blue on red"
+      );
+      const Div3 = React.createElement(
+        "div",
+        {
+          style: {
+            backgroundColor: "pink",
+            display: "inline-block",
+            height: "100px",
+            width: "100px",
+            color: "green"
+          }
+        },
+        "green on pink"
+      );
+
+      const DivParent = React.createElement(
+        "div",
+        { style: { padding: "50px", margin: "50px" } },
+        Div1,
+        Div2,
+        Div3
+      );
+
+      ReactDOM.render(DivParent, document.getElementById("app"));
+    </script>
+  </body>
+</html>

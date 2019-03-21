@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Pokemon API Call</title>
+</head>
+
+<body>
+	<div id='main'></div>
+</body>
+
+<script>
+	let images = "";
+
+	for (i = 1; i < 21; i++) {
+		images += `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${i}.png">`
+	}
+
+	document.getElementById('main').innerHTML = images
+
+</script>
+
+</html>

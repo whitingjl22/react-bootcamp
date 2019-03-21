@@ -1,0 +1,46 @@
+h1 {
+  color: #111;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+}
+
+.listItems {
+  list-style-type: none;
+  color: #111;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 2;
+  text-align: center;
+  border: 1px solid black;
+  width: 600px;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+.votes{
+	height: 30px;
+	width: 60px;
+	display: inline-block;
+	margin-right: 120px;
+	font-size: 30px;
+}
+
+.listItemText{
+	margin-right: 40px;
+	height: 30px;
+	width: 60px;
+	display: inline-block;
+}
+
+img {
+	height: 30px;
+	width: 30px;
+	margin-left: 120px;
+	display: inline-block;
+}

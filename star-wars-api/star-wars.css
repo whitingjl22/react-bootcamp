@@ -1,0 +1,20 @@
+*{
+	margin: 0px;
+	padding: 0px;
+ }
+
+ #images{
+	width: 200px;
+	height: 300px;
+ }
+
+ #characters{
+	margin-top: 20px; 
+	display: flex;
+	justify-content: space-evenly;
+ }
+
+ #facts{
+	margin: 100px;
+	text-align: center;
+ }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather Forecast App</title>
+    <Script src="node_modules/jquery/dist/jquery.js"></Script>
+    <link rel="stylesheet" type="text/css" href="weather.css" />
+  </head>
+
+  <body>
+    <div id="main">
+      <input id="input" type="text" name="search" />
+      <button onclick="buttonClick()">Search Weather</button>
+
+      <p id="returnedWeather"></p>
+    </div>
+  </body>
+
+  <script>
+    var apiKey = "7e1822d3c3b9cde8ba285340f59751c1";
+
+    function buttonClick() {
+      let userInput = document.getElementById("input").value;
+
+      $(document).ready(function() {
+        $.get(
+          `http://api.openweathermap.org/data/2.5/weather?q=${userInput},us&&appid=${apiKey}`,
+          function(res) {
+            console.log(res);
+            let stats = "";
+            let kelvinTemp = res.main.temp;
+            let subtractFromKelvin = kelvinTemp - 273.15;
+            let multiply = subtractFromKelvin * 1.8;
+            let fahrenheitResult = Math.trunc(multiply + 32);
+
+            stats += `<h2> ${res.name} </h2>`;
+            stats += `<h4> Temperature: ${fahrenheitResult}° </h4>`;
+
+            document.getElementById("returnedWeather").innerHTML = stats;
+          },
+          "json"
+        );
+      });
+    }
+  </script>
+</html>

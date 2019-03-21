@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="tic tac toe" content="new features" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="styleSheet" type="text/css" href="index.css" />
+    <title>Tic Tac Toe</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      const Box = (props) => {
+        return (
+          <div className="boxContainer">
+            {props.board.map((box, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="box"
+                  onClick={() => {
+                    props.handleClick(idx);
+                  }}
+                >
+                  {box}
+                </div>
+              );
+            })}
+          </div>
+        );
+      };
+
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            board: Array(9).fill(null),
+            player: "X",
+            totalMoves: 0
+          };
+        }
+
+        handleClick = (idx) => {
+          const tempState = Object.assign({}, this.state);
+          if (tempState.board[idx] === null) {
+            tempState.board[idx] = tempState.player;
+            tempState.totalMoves++;
+
+            if (this.checkWinner(tempState.player, tempState.totalMoves)) {
+              if (tempState.totalMoves === 9) {
+                alert("TIE");
+              } else {
+                alert(`Winner is ${this.state.player}`);
+              }
+              // Fast reset of board when there is a winner/tie
+              this.setState({
+                board: Array(9).fill(null),
+                player: "X",
+                totalMoves: 0
+              });
+            } else {
+              tempState.player = tempState.player === "X" ? "O" : "X";
+              this.setState({
+                board: tempState.board,
+                player: tempState.player,
+                totalMoves: tempState.totalMoves
+              });
+            }
+          }
+        };
+
+        checkWinner = (player, totalMoves) => {
+          const tempState = Object.assign({}, this.state);
+
+          if (
+            // Horizontal
+            (tempState.board[0] === player &&
+              tempState.board[1] === player &&
+              tempState.board[2] === player) ||
+            (tempState.board[3] === player &&
+              tempState.board[4] === player &&
+              tempState.board[5] === player) ||
+            (tempState.board[6] === player &&
+              tempState.board[7] === player &&
+              tempState.board[8] === player) ||
+            // Vertical
+            (tempState.board[0] === player &&
+              tempState.board[3] === player &&
+              tempState.board[6] === player) ||
+            (tempState.board[1] === player &&
+              tempState.board[4] === player &&
+              tempState.board[7] === player) ||
+            (tempState.board[2] === player &&
+              tempState.board[5] === player &&
+              tempState.board[8] === player) ||
+            // Diagonal
+            (tempState.board[0] === player &&
+              tempState.board[4] === player &&
+              tempState.board[8] === player) ||
+            (tempState.board[2] === player &&
+              tempState.board[4] === player &&
+              tempState.board[6] === player)
+          ) {
+            return true;
+          } else if (totalMoves === 9) {
+            return true;
+          } else {
+            return false;
+          }
+        };
+
+        render() {
+          return (
+            <div className="appContainer">
+              <h1>Tic Tac Toe</h1>
+              <div>
+                <Box board={this.state.board} handleClick={this.handleClick} />{" "}
+              </div>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

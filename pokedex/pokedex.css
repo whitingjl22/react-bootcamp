@@ -1,0 +1,25 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#main {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#pokemon {
+  width: 400px;
+}
+
+#pokedex {
+  padding: 15px;
+  width: 200px;
+  border: 15px solid red;
+  background-color: lightgray;
+  margin-top: 10px;
+}
+
+.indent {
+  margin-left: 20px;
+}

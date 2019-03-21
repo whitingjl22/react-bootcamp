@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dojo Query Library</title>
+  </head>
+
+  <body>
+    <div id="main">
+      <button id="buttonClick">Button Click</button>
+
+      <button id="buttonHover">Button Hover</button>
+    </div>
+  </body>
+
+  <script>
+    (function(window) {
+      window.$Dojo = function(id) {
+        let el = document.getElementById(id);
+        return {
+          click: function(functionForAClick) {
+            el.onclick = functionForAClick;
+          },
+          hover: function(functionForHover, functionForHoverOff) {
+            el.onmouseover = functionForHover;
+            el.onmouseout = functionForHoverOff;
+          }
+        };
+      };
+    })(window);
+
+    $Dojo("buttonClick").click(function() {
+      console.log("The button was clicked!");
+    });
+
+    $Dojo("buttonHover").hover(
+      function() {
+        console.log("The button was hovered ON!");
+      },
+      function() {
+        console.log("The button was hovered OFF!");
+      }
+    );
+  </script>
+</html>

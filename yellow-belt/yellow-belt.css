@@ -1,0 +1,226 @@
+/*CSS reset settings here*/
+*{
+	margin: 0px;
+	padding: 0px;
+ }
+
+ #wrapper{
+	min-height: 1400px;
+	width: 1150px;
+	background-color: black;
+	margin: 25px;
+ }
+ #header{
+	min-height: 100px;
+	width: 1093px;	
+	background-color: rgb(48, 48, 48);
+	display: inline-block;
+  margin: 5px;
+	padding-right: 37px;
+	margin-left: 10px;
+ }
+ .logo {
+	width: 200px;
+	height: 60px; 
+	text-align: left;
+	margin-left: 14px;
+	margin-top: 14px;
+	display: inline-block;
+	background-image: url('img/logo.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+h3 {
+	width: 200px;
+	position: relative;
+	top: -60px;
+	margin-left: 910px;
+	color: white;
+}
+h2 {
+	position: relative;
+	top: 60px;
+	display: inline-block;
+	color: white;
+	margin-left: 40px;
+}
+h4 {
+	position: relative;
+	display: inline-block;
+	color: white;
+	margin-left: 40px;
+	font-size: 20px;
+}
+h5 {
+	position: relative;
+	display: inline-block;
+	color:orange;
+	margin-left: 40px;
+	font-size: 20px;
+}
+ #navigation{
+	min-height: 50px;
+	width: 1121px;
+	background-color:gray;
+	margin: 19px;
+	margin-top: -7px;
+	margin-left: 10px;
+	padding-right: 10px;
+	display: inline-block;
+	vertical-align: top;
+ }
+ .nav_ul li{
+	display: inline-block;
+	font-size: 24px;
+	padding: 10px;
+	color: white;
+	margin: 5px;
+ }
+ #carousel{
+	min-height: 400px;
+	width: 1121px;
+	background-color:gray;
+	margin: 19px;
+	margin-top: -16px;
+	margin-left: 10px;
+	padding-right: 10px;
+	display: inline-block;
+ }
+ .main_pic {
+	width: 1101px;
+	min-height: 400px;
+	display: inline-block;
+	background-image: url('img/main_pic.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-left: 30px;
+}
+.portfolio1 {
+	min-height: 350px;
+	width: 255px;
+	display: inline-block;
+	background-image: url('img/portfolio1.png');
+	background-repeat: no-repeat;
+}
+.portfolio2 {
+	min-height: 350px;
+	width: 255px;
+	display: inline-block;
+	background-image: url('img/portfolio2.png');
+	background-repeat: no-repeat;
+}
+.portfolio3 {
+	min-height: 350px;
+	width: 255px;
+	display: inline-block;
+	background-image: url('img/portfolio3.png');
+	background-repeat: no-repeat;
+}
+.portfolio4 {
+	min-height: 350px;
+	width: 255px;
+	display: inline-block;
+	background-image: url('img/portfolio4.png');
+	background-repeat: no-repeat;
+}
+ #info_content{
+	min-height: 200px;
+	width: 1121px;
+	background-color: rgb(48, 48, 48);
+	margin: 19px;
+	margin-top: -20px;
+	margin-left: 10px;
+	padding-right: 10px;
+	display: inline-block;
+	margin-bottom: -10px;
+ }
+ .info_table th{
+	display: inline-block;
+	font-size: 24px;
+	padding: 10px;
+	color: orange;
+	margin: 5px;
+	width: 210px;
+	padding-right: 10px;
+	margin-left: 40px;
+ }
+ .info_table td{
+	display: inline-block;
+	font-size: 15px;
+	padding: 10px;
+	color: white;
+	margin: 5px;
+	width: 210px;
+	margin-left: 40px;
+ }
+ #purchase_content{
+	min-height: 200px;
+	width: 1121px;
+	background-color: rgb(32, 32, 35);
+	margin: 19px;
+	margin-top: -20px;
+	margin-left: 10px;
+	padding-right: 10px;
+	display: inline-block;
+ }
+ #purchase_content p{
+	position: relative;
+	top: 70px;
+	display: inline-block;
+	color: white;
+	margin-left: 40px;
+	font-size: 15px;
+ }
+ #purchase_content a{
+	display: inline-block;
+	background-color: orange;
+	padding: 15px;
+	width: 100px;
+	text-align: center;
+	margin-left: 250px;
+	color: white;
+	text-decoration: none;
+ }
+ #footer{
+	min-height: 500px;
+	width: 1121px;
+	background-color: rgb(48, 48, 48);
+	margin: 19px;
+	margin-top: -20px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	padding-right: 10px;
+	display: inline-block;
+	vertical-align: top;
+	padding-bottom: 10px;
+ }
+ .footer_nav{
+	min-height: 70px;
+	width: 1121px;
+	background-color: rgb(48, 48, 48);
+	margin: 19px;
+	margin-top: 1px;
+	margin-left: 1px;
+	padding-right: 10px;
+	display: inline-block;
+ }
+ .footer_nav a{
+	display: inline-block;
+	padding: 15px;
+	margin-left: 800px;
+	color: orange;
+	text-decoration: none;
+	margin-top: 10px;
+ }
+ .subcontents{
+	min-height: 350px;
+	width: 255px;
+	background-color: yellow;
+	display: inline-block;
+	margin: 4px;
+	margin-top: -20px;
+	margin-left: 15px;
+	padding-right: 2px;
+ }
+
+ 

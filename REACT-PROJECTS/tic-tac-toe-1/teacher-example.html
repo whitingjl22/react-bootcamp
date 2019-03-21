@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TTT Teacher Example</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/prop-types/prop-types.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+      * {
+        outline: 1px dotted red;
+      }
+      .row {
+        display: block;
+        margin: 0 auto;
+        height: 52px;
+        width: 152px;
+      }
+      .cell {
+        display: inline-block;
+        vertical-align: top;
+        height: 50px;
+        width: 50px;
+      }
+      .gameBox {
+        width: 155px;
+        height: 155px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      const Board = (props) => {
+        console.log("Board props: ", props);
+        return (
+          <div className="gameBox">
+            <div
+              className="cell"
+              onClick={() => {
+                props.playerClicked(0);
+              }}
+            >
+              {props.board[0] === 1 ? "X" : null}
+              {props.board[0] === 0 ? "O" : null}
+            </div>
+            <div
+              className="cell"
+              onClick={() => {
+                props.playerClicked(1);
+              }}
+            >
+              {props.board[1] === 1 ? "X" : null}
+              {props.board[1] === 0 ? "O" : null}
+            </div>
+            <div
+              className="cell"
+              onClick={() => {
+                props.playerClicked(2);
+              }}
+            >
+              {props.board[2] === 1 ? "X" : null}
+              {props.board[2] === 0 ? "O" : null}
+            </div>
+            <div
+              className="cell"
+              onClick={() => {
+                props.playerClicked(3);
+              }}
+            >
+              {props.board[3] === 1 ? "X" : null}
+              {props.board[3] === 0 ? "O" : null}
+            </div>
+            <div
+              className="cell"
+              onClick={() => {
+                props.playerClicked(4);
+              }}
+            >
+              {props.board[4] === 1 ? "X" : null}
+              {props.board[4] === 0 ? "O" : null}
+            </div>
+            <div
+              className="cell"
+              onClick={() => {
+                props.playerClicked(5);
+              }}
+            >
+              {props.board[5] === 1 ? "X" : null}
+              {props.board[5] === 0 ? "O" : null}
+            </div>
+            <div
+              className="cell"
+              onClick={() => {
+                props.playerClicked(6);
+              }}
+            >
+              {props.board[6] === 1 ? "X" : null}
+              {props.board[6] === 0 ? "O" : null}
+            </div>
+            <div
+              className="cell"
+              onClick={() => {
+                props.playerClicked(7);
+              }}
+            >
+              {props.board[7] === 1 ? "X" : null}
+              {props.board[7] === 0 ? "O" : null}
+            </div>
+            <div
+              className="cell"
+              onClick={() => {
+                props.playerClicked(8);
+              }}
+            >
+              {props.board[8] === 1 ? "X" : null}
+              {props.board[8] === 0 ? "O" : null}
+            </div>
+          </div>
+        );
+      };
+
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            board: new Array(9).fill(null),
+            history: [],
+            currentTurn: 0,
+            totalMoves: 0
+          };
+        }
+
+        playerClicked = (index) => {
+          console.log("INDEX CLICKED: ", index);
+          const tempState = Object.assign({}, this.state);
+          if (tempState.board[index] === null) {
+            tempState.board[index] = tempState.currentTurn; // Mark on board 0 or 1
+            tempState.totalMoves += 1; // Increment total moves
+
+            // tempState.history.push( Object.assign({}, tempState, {
+            //     board: [...tempState.board]
+            // }) );
+
+            if (
+              this.checkWinner(this.state.currentTurn, tempState.totalMoves)
+            ) {
+              // IF SOMEONE WON
+              alert(`Wiiner is ${this.state.currentTurn}`);
+              this.setState({
+                board: new Array(9).fill(null),
+                currentTurn: 0,
+                totalMoves: 0
+              });
+            } else {
+              tempState.currentTurn = tempState.currentTurn ? 0 : 1; // Change turn from 0 to 1
+              this.setState(tempState);
+            }
+          }
+          console.log(this.state);
+        };
+
+        checkWinner = (player, totalMoves) => {
+          const tempState = Object.assign({}, this.state);
+
+          if (
+            // Horizontal
+            (tempState.board[0] === player &&
+              tempState.board[1] === player &&
+              tempState.board[2] === player) ||
+            (tempState.board[3] === player &&
+              tempState.board[4] === player &&
+              tempState.board[5] === player) ||
+            (tempState.board[6] === player &&
+              tempState.board[7] === player &&
+              tempState.board[8] === player) ||
+            // Vertical
+            (tempState.board[0] === player &&
+              tempState.board[3] === player &&
+              tempState.board[6] === player) ||
+            (tempState.board[1] === player &&
+              tempState.board[4] === player &&
+              tempState.board[7] === player) ||
+            (tempState.board[2] === player &&
+              tempState.board[5] === player &&
+              tempState.board[8] === player) ||
+            // Diagonal
+            (tempState.board[0] === player &&
+              tempState.board[4] === player &&
+              tempState.board[8] === player) ||
+            (tempState.board[2] === player &&
+              tempState.board[4] === player &&
+              tempState.board[6] === player)
+          ) {
+            return true;
+          } else if (totalMoves === 9) {
+            alert("TIE!");
+          } else {
+            return false;
+          }
+        };
+
+        render() {
+          console.log(this.state);
+          return (
+            <div>
+              <Board
+                board={this.state.board}
+                playerClicked={this.playerClicked}
+              />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
