@@ -23,3 +23,15 @@ let newArray2 = arr.map((number) => number * 2)
 // })
 
 // console.log(test);
+
+/// FILTER - REMOVE AN ITEM FROM ARRAY ///
+const participants = [
+  { id: '1', username: 'john' }, 
+  { id: '2', username: 'mary' }, 
+  { id: '3', username: 'sam' }, 
+]
+function removeParticipant(participants, id) { 
+  return participants.filter(participant => participant.id !== id) 
+} 
+console.log(removeParticipant(participants, '1'))
+// [ { "id": "2", "username": "mary" }, { "id": "3", "username": "sam" } ]
