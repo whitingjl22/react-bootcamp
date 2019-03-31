@@ -14,5 +14,12 @@ const array1 = [{id: 1, name: "John"}, {id: 2, name: "Sam"}]
 const array2 = [{id: 3, name: "Bob"}, {id: 4, name: "Ashley"}]
 const array3 = [{id: 5, name: "Alex"}, {id: 6, name: "Nicole"}]
 
-console.log(concatAll(array1, array2, array3))
+//console.log(concatAll(array1, array2, array3))
 //[ { "id": 1, "name": "John" }, { "id": 2, "name": "Sam" }, { "id": 3, "name": "Bob" }, { "id": 4, "name": "Ashley" }, { "id": 5, "name": "Alex" }, { "id": 6, "name": "Nicole" } ]
+
+
+/// SLICE: Find passed in index then returns remaining items
+const numbers = [100, 200, 300, 400, 500] 
+const copy = numbers.slice(1)
+
+//console.log(copy) // [ 200, 300, 400, 500 ]
