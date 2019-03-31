@@ -18,8 +18,13 @@ const array3 = [{id: 5, name: "Alex"}, {id: 6, name: "Nicole"}]
 //[ { "id": 1, "name": "John" }, { "id": 2, "name": "Sam" }, { "id": 3, "name": "Bob" }, { "id": 4, "name": "Ashley" }, { "id": 5, "name": "Alex" }, { "id": 6, "name": "Nicole" } ]
 
 
-/// SLICE: Find passed in index then returns remaining items
+/// SLICE EXAMPLES
 const numbers = [100, 200, 300, 400, 500] 
 const copy = numbers.slice(1)
 
 //console.log(copy) // [ 200, 300, 400, 500 ]
+
+const numbers = [100, 200, 300, 400, 500] 
+const copy = numbers.slice(1,3)
+
+//console.log(copy) [ 200, 300 ]
