@@ -1,0 +1,82 @@
+// Process Flow
+View -> Action -> Reducer(s) -> Store -> View
+
+// Reducer(s):
+(prevState, action) => newState
+
+// Example Action/Dispatch:
+{
+	type: 'TODO_ADD',
+		todo: { id: '0', name: 'learn redux', completed: false }, // optional payload
+},
+{
+  type: 'TODO_TOGGLE',
+  todo: { id: '0' },
+}
+
+// The reducer(s) would have to act on two actions now: TODO_ADD and TODO_TOGGLE. 
+By using a switch case statement, you can branch into different cases. 
+If there is not such a case, you return the unchanged state by default.
+
+function reducer(state, action) {
+  switch(action.type) {
+    case 'TODO_ADD' : {
+      return applyAddTodo(state, action);
+    }
+    case 'TODO_TOGGLE' : {
+      return applyToggleTodo(state, action);
+    }
+    default : return state;
+  }
+}
+
+function applyAddTodo(state, action) {
+  return state.concat(action.todo);
+}
+
+function applyToggleTodo(state, action) {
+  return state.map(todo =>
+    todo.id === action.todo.id
+      ? Object.assign({}, todo, { completed: !todo.completed })
+      : todo
+  );
+}
+
+// Redux Store:
+import { createStore } from 'redux';
+
+// The createStore function takes one mandatory argument: a reducer.
+const store = createStore(reducer);
+
+// In addition, the createStore takes a second optional argument: the initial state. 
+In the case of the Todo application, the reducer operates on a list of todos as state. 
+The list of todo items should be initialized as an empty array or pre-filled array with todos. 
+If it wasn’t initialized, the reducer would fail because it would operate on an undefined argument.
+
+const store = createStore(reducer, []);
+
+// How to dispatch an action:
+
+store.dispatch({
+  type: 'TODO_ADD',
+  todo: { id: '0', name: 'learn redux', completed: false },
+});
+
+// How to get the global state from the store:
+
+store.getState();
+
+// How to subscribe (and unsubscribe) to the store in order to listen (and unlisten) for updates:
+
+const unsubscribe = store.subscribe(() => {
+  console.log(store.getState());
+});
+
+unsubscribe();
+
+
+
+
+
+
+
